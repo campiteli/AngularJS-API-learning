@@ -81,17 +81,7 @@ customerApp.controller('CustomerController', ['$scope', '$http', '$q', function(
     };
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	$scope.clear = function () {
 		$scope.formFirstName = null;
 		$scope.formLastName = null;

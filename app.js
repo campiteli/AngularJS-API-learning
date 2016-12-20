@@ -1,10 +1,10 @@
 var customerApp = angular.module('customerApp', []);
 
 customerApp.controller('CustomerController', ['$scope', '$http', '$q', function($scope, $http, $q) {
-	var company = "BODYENERGY";                               //ok
-	var user = "RMS";                                         //ok
-	var pass = "rms5a853";                                    //ok
-	var apiKey = "4sYyQQopL5u2NTCecuVVWehaGNpfmRFLQR8JeLZ8";  //ok
+	var company = "xxxxxxxxxx";                               //ok
+	var user = "xxx";                                         //ok
+	var pass = "xxxxxxxx";                                    //ok
+	var apiKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";  //ok
 	var server = "localhost";                                 //ok
 	var port = "81";                                          //ok
 	var_store = "01";

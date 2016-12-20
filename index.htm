@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html data-ng-app="customerApp">
+<head>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="scripts/ui-bootstrap-tpls-0.11.0.js"></script>
+    <script src="app.js"></script>
+
+	<script type="text/javascript">
+	/* ER Mask */
+	function mask(o,f){
+		v_obj=o
+		v_fun=f
+		setTimeout("execmask()",1)
+	}
+	function execmask(){
+		v_obj.value=v_fun(v_obj.value)
+	}
+	function mtel(v){
+		v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+		v=v.replace(/^(\d{3})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos 3 primeiros dígitos
+		v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+		return v;
+	}
+	function id( el ){
+		return document.getElementById( el );
+	}
+	window.onload = function(){
+		id('phone').onkeyup = function(){
+			mask( this, mtel );
+		}
+	}
+	</script>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+	
+    <style>
+		body{
+			background-image: url("landscape.jpg");
+			background-repeat: no-repeat;
+			background-position: absolute;
+			background-size: cover;
+			background-color: #E6E6E6;		
+		}
+		
+		label{ 	font-family: "Calibri Light";
+				font-size: 15px;
+				color: white;
+		}
+		
+        #ng-view {
+           -position: relative;
+            padding-top: 50px;
+        }
+        .center
+        {
+            margin-left:auto;
+            margin-right:auto;
+            width:100%;
+        }
+    </style>
+
+</head>
+<body ng-controller="CustomerController">
+    <header class="navbar navbar-default navbar-fixed-top">
+        <nav class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">
+                    <span class="appTitle">{{ title }}</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+	
+    <div data-ng-view="" id="ng-view" class="center">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-1" ></div>
+			<div class="col-md-3">
+				<br />
+
+				<div class="row">
+					<form name="customerForm" novalidate role="form">
+
+					    <div class="form-group">
+							<label for="custno">Cust_No</label>
+							<input type="text" class="form-control" required id="custno" placeholder="CustNo" ng-model="formCustNo" />
+						</div>
+
+					
+						<div class="form-group">
+							<label for="firstName">First Name</label>
+							<input type="text" class="form-control" required id="firstName" placeholder="FirstName" ng-model="formFirstName" />
+						</div>
+
+						<div class="form-group">
+							<label for="lastName">Last Name</label>
+							<input type="text" class="form-control" required id="lastName" placeholder="LastName" ng-model="formLastName" />
+						</div>
+					<!--	
+						<div class="form-group">
+							<label for="birthdate">Birth Date</label>
+							<select class="form-control" placeholder="Month" />
+								<option value="volvo">January</option>
+								<option value="saab">February</option>
+								<option value="mercedes">March</option>
+								<option value="audi">April</option>
+								<option value="audi">May</option>
+								<option value="audi">June</option>
+								<option value="audi">July</option>
+								<option value="audi">August</option>
+								<option value="audi">September</option>
+								<option value="audi">October</option>
+								<option value="audi">November</option>
+								<option value="audi">December</option>
+							</select>
+						</div>
+						-->
+						<div class="form-group">
+							<label for="address">Address1</label>
+							<input type="text" class="form-control" id="adrs_1" placeholder="Address" ng-model="formAadrs_1" />
+						</div>
+					
+						<div class="form-group">
+							<label for="address">Address2</label>
+							<input type="text" class="form-control" id="adrs_2" placeholder="Address" ng-model="formAadrs_2" />
+							
+						</div>
+						
+						<div class="form-group">
+							<label for="city">City</label>
+							<input type="text" class="form-control" id="city" placeholder="City" ng-model="formCity" />
+						</div>
+                        <div class="form-group">
+							<label for="zip">Postal Code</label>
+							<input type="text" class="form-control" id="zip" placeholder="Postal Code" ng-model="formZip" />
+						</div>											
+						
+						<div class="form-group">
+							<label for="phone">Phone</label>
+						<!--<input type="tel" class="form-control" id="phone" maxlength="14 ng-model="formPhone" />-->
+							<input type="tel" class="form-control" name="phone" id="phone" maxlength="14" placeholder="Phone" ng-model="formPhone" />
+							
+						</div>
+						<div class="form-group">
+							<label for="email">eMail</label>
+							<input type="email" class="form-control" id="email" placeholder="eMail" ng-model="formEMail" />
+						</div>						
+						<button type="submit" class="btn btn-default" ng-click="submit(formcust_no, formFirstName, formLastName, formAadrs_1, formAadrs_2, formCity, formZip, formPhone, formEMail)">Submit</button>
+                        <button type="retrieve" class="btn btn-default" ng-click="retrieve(formCustNo)">Retrieve</button>
+						<button type="reset" class="btn btn-default">Clear</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-md-2" ></div>
+		</div>
+	</div>
+	</div>
+
+</body>
+</html>
